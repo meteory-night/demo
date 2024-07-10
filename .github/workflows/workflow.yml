@@ -41,7 +41,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: .src/main/resources/Dockerfile
+          file: ./src/main/resources/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/demodemo:latest  # 镜像标签
       - name: Deploy to server  # 部署到服务器

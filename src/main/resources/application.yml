@@ -9,9 +9,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   application:
     name: demo
-# sudo docker run -itd -p 30038:8088 --name test java-test:v1.0   172.17.0.1:30306
+# sudo docker run -itd -p 30038:8088 --name test java-test:v1.0 ->  172.17.0.1:30306
 mybatis:
-  type-aliases-package: com.example.demo.dao #\u5305\u76EE\u5F55
+  type-aliases-package: com.example.demo.dao #!!!
   configuration:
     map-underscore-to-camel-case: true
     default-fetch-size: 100

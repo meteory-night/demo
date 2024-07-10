@@ -52,7 +52,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}  # SSH 私钥：自己客户端的
           port: 30022
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/demodemo:latest  # 拉取最新的 Docker 镜像
-            docker stop my-app || true  # 停止旧容器
-            docker rm my-app || true  # 移除旧容器
-            docker run -d --name my-app -p 30038:8088 ${{ secrets.DOCKER_USERNAME }}/demodemo:latest  # 运行新容器
+            docker pull ${{ secrets.DOCKER_USERNAME }}/demodemo:latest
+            docker stop my-app || true
+            docker rm my-app || true
+            docker run -d --name my-app -p 30038:8088 ${{ secrets.DOCKER_USERNAME }}/demodemo:latest

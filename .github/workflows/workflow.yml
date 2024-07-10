@@ -12,7 +12,7 @@ jobs:
     name: SpringBoot to Docker
     steps:
       - uses: actions/checkout@v2
-      - name: Set up JDK 13
+      - name: 设置JDK： 13
         uses: actions/setup-java@v1
         with:
           java-version: 13
@@ -24,15 +24,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
       # 编译打包
-      - name: Build with Maven
+      - name: Maven编译打包
         run: mvn package -Dmaven.test.skip=true
       # 登录到 Docker Hub
-      - name: Login to Docker Hub
+      - name: 登录到 Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}  # Docker 用户名
           password: ${{ secrets.DOCKER_PASSWORD }}  # Docker 密码
-      - name: Set up Docker Buildx  # 设置 Docker Buildx（用于构建多平台镜像）
+      - name: 设置 Docker Buildx  # 设置 Docker Buildx（用于构建多平台镜像）
         id: buildx
         uses: docker/setup-buildx-action@v1
       # 构建并推送 Docker 镜像
@@ -50,6 +50,7 @@ jobs:
           host: ${{ secrets.SERVER_IP }}  # 服务器 IP
           username: ${{ secrets.SERVER_USER }}  # 服务器用户名
           key: ${{ secrets.SSH_PRIVATE_KEY }}  # SSH 私钥
+          port: 30022
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/demodemo:latest  # 拉取最新的 Docker 镜像
             docker stop my-app || true  # 停止旧容器

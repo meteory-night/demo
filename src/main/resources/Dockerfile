@@ -6,7 +6,7 @@ FROM openjdk:13-ea-19-jdk-alpine3.9
 WORKDIR /app
 
 # 将打包好的jar文件复制到容器内
-COPY ./target/demo-0.0.1-SNAPSHOT.jar /app/demo-0.0.1-SNAPSHOT.jar
+COPY target/demo-0.0.1-SNAPSHOT.jar /app/demo-0.0.1-SNAPSHOT.jar
 
 # 暴露8088端口
 EXPOSE 8088
